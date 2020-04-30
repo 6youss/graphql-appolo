@@ -1,0 +1,23 @@
+{
+  "name": "zdoctor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Youcef ZAHARIOU",
+  "license": "MIT",
+  "scripts": {
+    "web": "yarn workspace @jouwal/web start",
+    "web:build": "yarn workspace @jouwal/web build",
+    "android": "yarn workspace @jouwal/mobile android",
+    "ios": "yarn workspace @jouwal/mobile  ios",
+    "studio": "yarn workspace @jouwal/mobile studio",
+    "xcode": "yarn workspace @jouwal/mobile xcode",
+    "emulator": "emulator -avd Pixel_XL_API_29",
+    "nuke": "rm -rf node_modules packages/**/node_modules"
+  },
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

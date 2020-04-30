@@ -1,0 +1,17 @@
+{
+  "name": "@jouwal/common",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./dist && tsc"
+  },
+  "devDependencies": {
+    "@types/yup": "^0.26.36",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "yup": "^0.28.3"
+  }
+}

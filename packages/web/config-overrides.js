@@ -9,7 +9,8 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 const appIncludes = [
   resolveApp("src"),
   resolveApp("../core/src"),
-  resolveApp("../../node_modules/react-native-gesture-handler/"),
+  resolveApp("../common/src"),
+  resolveApp("../../node_modules/react-router-native/"),
 ];
 
 module.exports = function override(config, env) {

@@ -1,8 +1,8 @@
 input MessageInput {
-    text: String!
-    listingId: String!
+  text: String!
+  listingId: String!
 }
 
 type Mutation {
-    createMessage(message: MessageInput!): Boolean!
+  createMessage(message: MessageInput!): Boolean!
 }

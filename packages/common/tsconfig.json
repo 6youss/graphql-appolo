@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "module": "commonjs",
     "composite": true,
     "declaration": true,
     "isolatedModules": false,
@@ -10,5 +11,6 @@
     "rootDir": "src",
     "typeRoots": ["../../@types", "../../node_modules/@types"]
   },
-  "include": ["src/"]
+  "include": ["src/"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,42 +1,34 @@
-import * as bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 
 import { ResolverMap } from "../../../types/graphql-utils";
 import { User } from "../../../entity/User";
-import {
-  invalidLogin,
-  confirmEmailError,
-  forgotPasswordLockedError
-} from "./errorMessages";
+import { invalidLogin, confirmEmailError, forgotPasswordLockedError } from "./errorMessages";
 import { userSessionIdPrefix } from "../../../constants";
 
 const errorResponse = [
   {
     path: "email",
-    message: invalidLogin
-  }
+    message: invalidLogin,
+  },
 ];
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    login: async (
-      _,
-      { email, password }: GQL.ILoginOnMutationArguments,
-      { session, redis, req }
-    ) => {
+    login: async (_, { email, password }: GQL.ILoginOnMutationArguments, { session, redis, req }) => {
       const user = await User.findOne({ where: { email } });
 
       if (!user) {
-        return { errors: errorResponse  };
+        return { errors: errorResponse };
       }
 
       if (!user.confirmed) {
-        return { 
+        return {
           errors: [
             {
               path: "email",
-              message: confirmEmailError
-            }
-          ]
+              message: confirmEmailError,
+            },
+          ],
         };
       }
 
@@ -45,16 +37,16 @@ export const resolvers: ResolverMap = {
           errors: [
             {
               path: "email",
-              message: forgotPasswordLockedError
-            }
-          ]
+              message: forgotPasswordLockedError,
+            },
+          ],
         };
       }
 
       const valid = await bcrypt.compare(password, user.password);
 
       if (!valid) {
-        return { errors: errorResponse  };
+        return { errors: errorResponse };
       }
 
       // login sucessful
@@ -63,7 +55,7 @@ export const resolvers: ResolverMap = {
         await redis.lpush(`${userSessionIdPrefix}${user.id}`, req.sessionID);
       }
 
-      return { sessionId: req.sessionID};
-    }
-  }
+      return { sessionId: req.sessionID };
+    },
+  },
 };

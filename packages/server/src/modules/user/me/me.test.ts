@@ -1,5 +1,5 @@
 import { Connection } from "typeorm";
-import * as faker from "faker";
+import faker from "faker";
 
 import { User } from "../../../entity/User";
 import { TestClient } from "../../../utils/TestClient";
@@ -16,7 +16,7 @@ beforeAll(async () => {
   const user = await User.create({
     email,
     password,
-    confirmed: true
+    confirmed: true,
   }).save();
   userId = user.id;
 });
@@ -40,8 +40,8 @@ describe("me", () => {
     expect(response.data).toEqual({
       me: {
         id: userId,
-        email
-      }
+        email,
+      },
     });
   });
 });

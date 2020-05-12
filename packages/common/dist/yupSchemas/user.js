@@ -1,43 +1,45 @@
-import * as yup from 'yup';
-// Validation Schema Definition
-export const fieldRequired = 'This field is required';
-export const invalidEmail = 'Email must be a valid email';
-export const emailNotLongEnough = 'Email must be at least 3 characters';
-export const passwordNotLongEnough = 'Password must be at least 3 characters';
-export const passwordNotMatch = 'Password does not match';
-export const registerPasswordValidation = yup
+"use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const yup = __importStar(require("yup"));
+exports.emailNotLongEnough = "email must be at least 3 characters";
+exports.passwordNotLongEnough = "password must be at least 3 characters";
+exports.invalidEmail = "email must be a valid email";
+exports.registerPasswordValidation = yup
     .string()
-    .min(3, passwordNotLongEnough)
+    .min(3, exports.passwordNotLongEnough)
     .max(255)
-    .required(fieldRequired);
-export const userValidationSchema = yup.object().shape({
+    .required();
+exports.validUserSchema = yup.object().shape({
     email: yup
         .string()
-        .min(3, emailNotLongEnough)
+        .min(3, exports.emailNotLongEnough)
         .max(255)
-        .email(invalidEmail)
-        .required(fieldRequired),
-    password: registerPasswordValidation
+        .email(exports.invalidEmail)
+        .required(),
+    password: exports.registerPasswordValidation
 });
-export const confirmPassword = yup
-    .string()
-    .oneOf([yup.ref('password'), null], passwordNotMatch)
-    .required(fieldRequired);
-const invalidLogin = 'Invalid login';
-export const loginSchema = yup.object().shape({
+const invalidLogin = "invalid login";
+exports.loginSchema = yup.object().shape({
     email: yup
         .string()
         .min(3, invalidLogin)
         .max(255, invalidLogin)
         .email(invalidLogin)
-        .required(fieldRequired),
+        .required(),
     password: yup
         .string()
         .min(3, invalidLogin)
         .max(255, invalidLogin)
-        .required(fieldRequired)
+        .required()
 });
-export const changePasswordSchema = yup.object().shape({
-    newPassword: registerPasswordValidation
+exports.changePasswordSchema = yup.object().shape({
+    newPassword: exports.registerPasswordValidation
 });
 //# sourceMappingURL=user.js.map

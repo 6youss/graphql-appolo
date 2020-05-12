@@ -1,5 +1,5 @@
 import { Connection } from "typeorm";
-import * as faker from "faker";
+import faker from "faker";
 
 import { invalidLogin, confirmEmailError } from "./errorMessages";
 import { User } from "../../../entity/User";
@@ -27,19 +27,15 @@ const loginExpectError = async (e: string, p: string, errMsg: string) => {
     login: [
       {
         path: "email",
-        message: errMsg
-      }
-    ]
+        message: errMsg,
+      },
+    ],
   });
 };
 
 describe("login", () => {
   test("email not found send back error", async () => {
-    await loginExpectError(
-      faker.internet.email(),
-      faker.internet.password(),
-      invalidLogin
-    );
+    await loginExpectError(faker.internet.email(), faker.internet.password(), invalidLogin);
   });
 
   test("email not confirmed", async () => {

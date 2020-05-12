@@ -1,5 +1,5 @@
 type LoginResponse {
-  errors: [Error!],
+  errors: [Error!]
   sessionId: String
 }
 

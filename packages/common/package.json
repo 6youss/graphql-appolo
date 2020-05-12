@@ -1,15 +1,20 @@
 {
   "name": "@jouwal/common",
-  "version": "0.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index",
+  "types": "dist/index",
+  "version": "1.0.0",
+  "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "rimraf ./dist && tsc"
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
+    "compile": "tsc -b tsconfig.json",
+    "watch": "tsc -b tsconfig.json -w"
   },
   "devDependencies": {
     "@types/yup": "^0.26.36",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "typescript": "3.8.3"
   },
   "dependencies": {
     "yup": "^0.28.3"

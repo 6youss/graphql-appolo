@@ -1,9 +1,9 @@
 {
   "name": "@jouwal/web",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@jouwal/core": "0.0.1",
+    "@jouwal/core": "1.0.0",
     "@types/react-native": "^0.62.0",
     "firebase": "^7.14.1",
     "react": "16.11.0",
@@ -41,6 +41,6 @@
     "concurrently": "5.1.0",
     "react-app-rewired": "2.1.5",
     "shx": "^0.3.2",
-    "typescript": "3.8.2"
+    "typescript": "3.8.3"
   }
 }

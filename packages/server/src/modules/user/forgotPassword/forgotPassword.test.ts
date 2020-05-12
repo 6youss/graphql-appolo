@@ -1,6 +1,6 @@
 import { Connection } from "typeorm";
-import * as Redis from "ioredis";
-import * as faker from "faker";
+import Redis from "ioredis";
+import faker from "faker";
 import { passwordNotLongEnough } from "@jouwal/common";
 
 import { User } from "../../../entity/User";

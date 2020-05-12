@@ -12,7 +12,7 @@ export const resolvers: ResolverMap = {
             console.log(err);
           }
         });
-        res.clearCookie('qid');
+        res.clearCookie("qid");
         return true;
       }
 

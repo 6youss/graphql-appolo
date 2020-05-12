@@ -1,3 +1,3 @@
 type Query {
-    viewListing(id: String!): Listing
+  viewListing(id: String!): Listing
 }

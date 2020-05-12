@@ -1,4 +1,4 @@
-import * as rp from "request-promise";
+import rp from "request-promise";
 
 export class TestClient {
   url: string;
@@ -12,7 +12,7 @@ export class TestClient {
     this.options = {
       withCredentials: true,
       jar: rp.jar(),
-      json: true
+      json: true,
     };
   }
 
@@ -27,8 +27,8 @@ export class TestClient {
               message
             }
           }
-        `
-      }
+        `,
+      },
     });
   }
 
@@ -40,8 +40,8 @@ export class TestClient {
         mutation {
           logout
         }
-        `
-      }
+        `,
+      },
     });
   }
 
@@ -56,8 +56,8 @@ export class TestClient {
               message
             }
           }
-        `
-      }
+        `,
+      },
     });
   }
 
@@ -72,8 +72,8 @@ export class TestClient {
               email
             }
           }
-        `
-      }
+        `,
+      },
     });
   }
 
@@ -88,8 +88,8 @@ export class TestClient {
             message
           }
         }
-        `
-      }
+        `,
+      },
     });
   }
 }
